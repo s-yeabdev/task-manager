@@ -28,7 +28,7 @@ Installation steps:
 1. Install Node.js from https://nodejs.org/
 2. Install MySQL from https://www.mysql.com/
 3. Clone the repository:
-   git clone https://github.com/s-yeabdev/task-manager-app.git
+   git clone https://github.com/s-yeabdev/task-manager.git
 4. Navigate to project folder:
    cd task-manager-app
 5. Install dependencies:
@@ -51,4 +51,4 @@ Installation steps:
 8. Start the application:
    node server.js
 9. Open browser and go to http://localhost:3000
-https://github.com/s-yeabdev/task-manager.git
+
