@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> | Task Manager</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">📋 Task Manager</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Home</a>
+                <a href="/create" class="nav-link <%= currentPage === 'create' ? 'active' : '' %>">+ New Task</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
