@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<div class="page-header">
+    <h1>My Tasks</h1>
+    <div class="filter-buttons">
+        <a href="/" class="filter-btn all">All</a>
+        <a href="/filter/pending" class="filter-btn pending">Pending</a>
+        <a href="/filter/in_progress" class="filter-btn progress">In Progress</a>
+        <a href="/filter/completed" class="filter-btn completed">Completed</a>
+    </div>
+</div>
+
+<% if (tasks.length === 0) { %>
+    <div class="empty-state">
+        <p>No tasks found. Create your first task!</p>
+        <a href="/create" class="btn btn-primary">Create Task</a>
+    </div>
+<% } else { %>
+    <div class="tasks-grid">
+        <% tasks.forEach(task => { %>
+            <div class="task-card priority-<%= task.priority %>">
+                <div class="task-header">
+                    <h3><%= task.title %></h3>
+                    <span class="priority-badge priority-<%= task.priority %>">
+                        <%= task.priority %>
+                    </span>
+                </div>
+                <p class="task-description">
+                    <%= task.description.length > 100 ? task.description.substring(0, 100) + '...' : task.description %>
+                </p>
+                <div class="task-meta">
+                    <span class="status-badge status-<%= task.status %>">
+                        <%= task.status.replace('_', ' ') %>
+                    </span>
+                    <span class="task-date">
+                        Created: <%= new Date(task.created_at).toLocaleDateString() %>
+                    </span>
+                </div>
+                <div class="task-actions">
+                    <a href="/task/<%= task.id %>" class="btn-view">View</a>
+                    <a href="/edit/<%= task.id %>" class="btn-edit">Edit</a>
+                    <form action="/delete/<%= task.id %>?_method=DELETE" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-delete" onclick="return confirm('Delete this task?')">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+<% } %>
+
+<%- include('partials/footer') %>
